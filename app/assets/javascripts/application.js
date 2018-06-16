@@ -85,7 +85,7 @@ $( document ).ready(function() {
 
 
 // This code below adds the aount you're sending and calculates the conversion amount as well as the final amount
-	$('.conversion_amount').mousedown(function(e) {
+	$('.conversion_amount').focus(function(e) {
 		var country = $('#send_country option:selected').text();
 		var send = $('.send_amount[name="' + country + '"]').val();
 		var send = parseFloat(send);
@@ -105,22 +105,24 @@ $( document ).ready(function() {
 
 		var send_option = parseFloat(send_option);
 
-//		alert("send fee is: " + send_option );
-
 		var fin = con_amount + send_option;
 		var fin = parseFloat(fin);
 		var fin = fin.toFixed(2);
 		$('.final_amount[name="' + country + '"]').val(fin);
-		$('.send_option').show();
+		$('.send_option').show(function() {
+			$('input[name=fee_select]:first', '.send_option[name="' + country + '"]').attr('checked', true);
+		});
 	});
 
 
-// the code below works, just not as intended, just testing things.
+// the code below works, just not as intended, just testing things (just keeps adding).
 	$('.next_day').click(function() {
+		var country = $('#send_country option:selected').text();
+
 		var fin = $('.final_amount').val();
 		var fin = parseFloat(fin);
 
-		var send_option = $('input[name=mim]:checked', '.send_option[name="' + country + '"]').val();
+		var send_option = $('input[name=fee_select]', '.send_option[name="' + country + '"]').val();
 		var send_option = parseFloat(send_option);
 
 		var change = fin + send_option;
@@ -131,14 +133,25 @@ $( document ).ready(function() {
 
 
 	$('.mim').click(function() {
+		var country = $('#send_country option:selected').text();
+
 		var fin = $('.final_amount').val();
 		var fin = parseFloat(fin);
 
-		var send_option = $('input[name=option]:checked', '.send_option').val();
+		var send_option = $('input[name=option]:selected', '.send_option').val();
 		var send_option = parseFloat(send_option);
 
 		var prior_option = $('.next_day').text();
 		var prior_option = parseFloat(prior_option);
+
+		var conv = $('.conversion_amount').val();
+		var conv = parseFloat(conv);
+
+		var mim = $('.mim_amnt[name="' + country + '"]').val();
+
+		if (con !== fin ) {
+			
+		}
 
 		var change1 = fin - prior_option;
 		$('.final_amount').val(change1);
@@ -147,36 +160,15 @@ $( document ).ready(function() {
 		var change2 = parseFloat(change2);
 		
 		$('.final_amount').val(change2);
-	});
+});
 
-	$('.send_amount').click(function() {
-		var country = $('#send_country').val("Canada");
-//		alert("The country you're sending to is: " + country );
-	});
 
+// This code works, it changes the form to the current country
 	$('.send_amount').focus(function() {
 		var country = $('#send_country option:selected').text();
-
-//		alert("The country you're sending to is: " + country );
-
 		$('#country_input_default').hide();
 		$('.country_input').hide();
 		$('.country_input[value="' + country + '"]').show();
-
-//		if ( $('.country_input').show() !== $('.country_input[value="' + country + '"]').show() ) {
-//			$('.country_input[value="' + country + '"]').show();
-//		};
-
 	});
-
-
-	$(".send_amount").keydown(function(event) {
-    var keycode = event.keyCode || event.which;
-	    if(keycode == '9') {
-	    	
-	        alert('You pressed the "tab" key in somewhere');    
-	    }
-	});
-	
 	
 });

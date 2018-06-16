@@ -24,9 +24,7 @@
 		<div id="paternal_name">
 			<p>
 				<span>
-					<%= f.input :pat_name, label: "Paternal Name: " %>
-				</span>
-				<span>
+					<%= f.input :pat_name, label: "Paternal Name: " %> 
 					<%= f.input :mat_name, label: "Maternal Name: " %>
 				</span>
 			</p>
@@ -40,6 +38,15 @@
 		<%= f.input :email, label: "E-Mail Address: "  %>
 
 		<br>
+
+<!--		<div class="form-check">
+			<label class="form-check-label">
+				<p><input type="radio" class="form-check-input" name="mim" value="5.6" checked> text for stuff 1 </p> <br>
+				<p><input type="radio" class="form-check-input" name="mim" value="2.3"> text for stuff 2 </p><br>
+			</label>
+		</div>  -->
+
+
 		<br>
 
 		<div id="send_country">
@@ -47,19 +54,16 @@
 		</div>
 
 		<div id='country_input_default'>
-				
-				<%= f.input :send_amount, input_html: { :class => "send_amount" }, label: "Send Amount: " %>
+			<%= f.input :send_amount, input_html: { :class => "send_amount" }, label: "Send Amount: " %>
 					
-				<p>The exchange rate for <span class="reciever_country">this country</span> is: <span class="exchange_rate"> 1 </span>  </p>
+			<p>The exchange rate for <span class="reciever_country">this country</span> is: <span class="exchange_rate"> 1 </span>  </p>
 					
-				<p> Local Currency payout: 
-					<input type="text" class="conversion_amount"></input>
-				</p>
+			<p> Local Currency payout: 
+				<input type="text" class="conversion_amount"></input>
+			</p>
 				
-				<%= f.input :final_amount, input_html: { :class => "final_amount" }, as: :currency, label: "Total Amount: " %>
-				
-			</div>
-
+			<%= f.input :final_amount, input_html: { :class => "final_amount" }, as: :currency, label: "Total Amount: " %>		
+		</div>
 		
 		<% @countries.each do |c| %>
 			<div class='country_input' value="<%= c.name %>">
@@ -83,18 +87,18 @@
 
 				<div class="send_option" name="<%= c.name %>">
 					<div class="form-check">
-					  <label class="form-check-label">
-					  	<input type="radio" class="form-check-input" name="mim" value="<%= c.mim_cost %>" checked>
-					  	Cost: $<span class="mim_amnt" name="<%= c.name %>" value="<%= c.mim_cost %>" > <%= c.mim_cost %> </span>
-					    Money-In-Minutes - Money will be available in 15 to 30 minutes.		  	
-					  </label>
+						<label class="form-check-label">
+					  		<input type="radio" class="form-check-input" name="fee_select" value="<%= c.mim_cost %>" >
+					  			<span>Cost: $<span class="mim_amnt" name="<%= c.name %>" value="<%= c.mim_cost %>" > <%= c.mim_cost %> </span>
+						    	Money-In-Minutes - Money will be available in 15 to 30 minutes.</span>
+					    </label>
 					</div>
-					<div class="form-check">
-					  <label class="form-check-label">
-					    <input name="next_day" type="radio" class="form-check-input" value="<%= c.nextday_cost %>">
-					    Cost: $<span class="nxtday_amnt" name="<%= c.name %>" value="<%= c.nextday_cost %>"> <%= c.nextday_cost %> </span>
-					    Next-Day Service - Money will be available at the start of the next day.
-					  </label>
+					<div class="form-check">    	  	
+						<label class="form-check-label">
+						    <input type="radio" class="form-check-input" name="fee_select" value="<%= c.nextday_cost %>">
+						    	<span>Cost: $<span class="nxtday_amnt" name="<%= c.name %>" value="<%= c.nextday_cost %>"> <%= c.nextday_cost %> </span>
+						    	Next-Day Service - Money will be available at the start of the next day.</span>
+						</label>
 					</div>
 				</div>
 			</div>
