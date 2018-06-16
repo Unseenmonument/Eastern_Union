@@ -1,0 +1,2 @@
+class SMoney < ApplicationRecord
+end

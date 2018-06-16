@@ -1,0 +1,187 @@
+
+	<%= simple_form_for @sender do |f| %> 
+
+		<div class='card'>
+			<div id="paternal_check" >
+				<label class="form-check-label"> Do you wish to use family name setting?
+			        <button type="button" class="btn btn-secondary btn-sm">Yes</button>
+			    </label>		
+			</div>
+
+			<div id="paternal_uncheck" >
+				<label class="form-check-label"> Do you wish to use family name setting?
+			        <button type="button" class="btn btn-secondary btn-sm">No</button>
+			    </label>
+		</div>	
+
+		<%= f.input :f_name, label: "First Name:  " %> 
+		<%= f.input :m_name, label: "Middle Name:  " %>
+						
+		<div id='last_name'>
+			<%= f.input :l_name, label: "Last Name: " %>
+		</div>
+		
+		<div id="paternal_name">
+			<p>
+				<span>
+					<%= f.input :pat_name, label: "Paternal Name: " %>
+				</span>
+				<span>
+					<%= f.input :mat_name, label: "Maternal Name: " %>
+				</span>
+			</p>
+		</div>	
+
+
+
+		<br>
+		<br>
+
+		<%= f.input :email, label: "E-Mail Address: "  %>
+
+		<br>
+		<br>
+
+		<div id="send_country">
+			<%= f.input :reciever_country, collection: @countries, input_html: { multiple: false}, label: "Send To: "  %>
+		</div>
+
+		<div id='country_input_default'>
+				
+				<%= f.input :send_amount, input_html: { :class => "send_amount" }, label: "Send Amount: " %>
+					
+				<p>The exchange rate for <span class="reciever_country">this country</span> is: <span class="exchange_rate"> 1 </span>  </p>
+					
+				<p> Local Currency payout: 
+					<input type="text" class="conversion_amount"></input>
+				</p>
+				
+				<%= f.input :final_amount, input_html: { :class => "final_amount" }, as: :currency, label: "Total Amount: " %>
+				
+			</div>
+
+		
+		<% @countries.each do |c| %>
+			<div class='country_input' value="<%= c.name %>">
+				<%= f.input :send_amount, input_html: { 
+					:class => "send_amount",
+					:name => c.name
+					 }, as: :currency, label: "Send Amount: " %>
+				
+				<p>The exchange rate for <span class="reciever_country"><%= c.name %></span> is: <span class="exchange_rate" name='<%= c.name %>' value='<%= c.exchange_rate %>'> <%= c.exchange_rate %> </span>.</p>
+					
+				<p> Local Currency Payout: 
+						<input type="text" name='<%= c.name %>' class="conversion_amount"></input>
+				</p>
+				
+				<%= f.input :final_amount, input_html: { 
+					:class => "final_amount",
+					:name => c.name 
+				 }, as: :currency, label: "Total Amount: " %>
+				
+				<br>
+
+				<div class="send_option" name="<%= c.name %>">
+					<div class="form-check">
+					  <label class="form-check-label">
+					  	<input type="radio" class="form-check-input" name="mim" value="<%= c.mim_cost %>" checked>
+					  	Cost: $<span class="mim_amnt" name="<%= c.name %>" value="<%= c.mim_cost %>" > <%= c.mim_cost %> </span>
+					    Money-In-Minutes - Money will be available in 15 to 30 minutes.		  	
+					  </label>
+					</div>
+					<div class="form-check">
+					  <label class="form-check-label">
+					    <input name="next_day" type="radio" class="form-check-input" value="<%= c.nextday_cost %>">
+					    Cost: $<span class="nxtday_amnt" name="<%= c.name %>" value="<%= c.nextday_cost %>"> <%= c.nextday_cost %> </span>
+					    Next-Day Service - Money will be available at the start of the next day.
+					  </label>
+					</div>
+				</div>
+			</div>
+		<% end %>
+
+		<br>
+
+
+		<div id="question_check">
+			<label class="form-check-label"> Do you wish to include a test question?
+			    <button type="button" class="btn btn-secondary btn-sm">Yes</button>
+			</label>
+		</div>
+		<div id="question_uncheck">
+			<label class="form-check-label"> Do you wish to include a test question?
+			    <button type="button" class="btn btn-secondary btn-sm">No</button>
+			</label>
+		</div>
+
+			<div id="test_q">
+				<%= f.input :test_question, label: "Test Question: " %>
+				<%= f.input :test_answer, label: "Test Answer: " %>
+			</div>
+
+		<br>
+
+		
+		
+		<br>
+
+		<%= f.input :address, label: "Address: " %>
+		<%= f.input :address_zip, label: "Zip Code: " %>
+		<%= f.input :address_state, label: "State: " %>
+		<%= f.input :phone_number, label: "Phone Number: " %>
+		
+		<br>
+		
+		<%= f.input :id_type, collection: [['US Drivers License'], ['Government ID'], ['Passport']] %>
+		
+		<div id='license'>
+			<%= f.input :lic_number, label: "License Number: " %>
+			<%= f.input :id_dob, label: "Date of Birth: "  %>
+			<%= f.input :lic_state, label: "State: "  %>
+		</div>
+
+		<div id='government'>
+			<%= f.input :gov_number, label: "Gov. ID Number: "  %>
+			<%= f.input :id_dob, label: "Date of Birth: "  %>
+			<%= f.input :gov_nation, collection: @countries, input_html: { multiple: false}, label: "Country: "  %>
+		</div>
+
+
+		<div id='passport'>
+			<%= f.input :pass_number, label: "Passport Number: " %>
+			<%= f.input :id_dob, label: "Date of Birth: "  %>
+			<%= f.input :pass_nation, collection: @countries, input_html: { multiple: false}, label: "Country: "  %>
+		</div>
+
+		<br>
+
+		<div id="reciever_name_check">
+			<label class="form-check-label"> Enter Materal and Paternal Names?
+			    <button type="button" class="btn btn-secondary btn-sm">Yes</button>
+			</label>
+		</div>
+		<div id="reciever_name_uncheck">
+			<label class="form-check-label"> Enter Normal Last Name?
+			    <button type="button" class="btn btn-secondary btn-sm">Yes</button>
+			</label>
+		</div>
+
+			<%= f.input :reciever_f_name, label: "First Name: " %>
+			<%= f.input :reciever_m_name, label: "Middle Name: "  %>
+
+		<div id="reciever_name_reg" >	
+			<%= f.input :reciever_l_name, label: "Last Name: "  %>
+		</div>
+		<div id="reciever_name_alt">
+			<%= f.input :reciever_pat_name, label: "Paternal Last Name: " %>
+			<%= f.input :reciever_mat_name, label: "Maternal Last Name: "  %>
+		</div>
+
+
+
+
+		<br>
+
+		<%= f.submit 'Submit Transaction' %>
+
+	<% end %>

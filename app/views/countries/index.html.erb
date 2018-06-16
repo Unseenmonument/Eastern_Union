@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Countries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mim cost</th>
+      <th>Nextday cost</th>
+      <th>Exchange rate</th>
+      <th>Require</th>
+      <th>Require testq</th>
+      <th>Communist q</th>
+      <th>Req twoid</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @countries.each do |country| %>
+      <tr>
+        <td><%= country.name %></td>
+        <td><%= country.mim_cost %></td>
+        <td><%= country.nextday_cost %></td>
+        <td><%= country.exchange_rate %></td>
+        <td><%= country.require_id %></td>
+        <td><%= country.require_testq %></td>
+        <td><%= country.communist_q %></td>
+        <td><%= country.req_twoid %></td>
+        <td><%= link_to 'Show', country %></td>
+        <td><%= link_to 'Edit', edit_country_path(country) %></td>
+        <td><%= link_to 'Destroy', country, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Country', new_country_path %>

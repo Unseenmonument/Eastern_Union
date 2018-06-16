@@ -1,0 +1,2 @@
+module SMoneysHelper
+end

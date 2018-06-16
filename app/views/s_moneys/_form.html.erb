@@ -1,0 +1,35 @@
+<%= simple_form_for @sender do |f| %> 
+
+	<%= f.input :f_name %>
+	<%= f.input :m_name %>
+	
+	<%= f.input :familyname, as: :boolean, checked_value: true, unchecked_value: false %>
+	
+	<%= f.input :l_name %>
+	<%= f.input :pat_name %>
+	<%= f.input :mat_name %>
+	<%= f.input :address %>
+	<%= f.input :address_zip %>
+	<%= f.input :address_state %>
+	<%= f.input :phone_number %>
+	
+	<br>
+	
+	<%= f.input :email  %>
+	
+	<br>
+	
+	<%= f.input :id_type %>
+	<%= f.input :lic_number %>
+	<%= f.input :pass_number %>
+	<%= f.input :gov_number  %>
+	<%= f.input :id_dob  %>
+	<%= f.input :lic_state  %>
+	<%= f.input :pass_country %>
+	<%= f.input :gov_country %>
+
+	<br>
+
+	<%= f.submit 'Submit Transaction' %>
+
+<% end %>

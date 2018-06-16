@@ -1,0 +1,2 @@
+class RMoneysController < ApplicationController
+end

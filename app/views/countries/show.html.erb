@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @country.name %>
+</p>
+
+<p>
+  <strong>Mim cost:</strong>
+  <%= @country.mim_cost %>
+</p>
+
+<p>
+  <strong>Nextday cost:</strong>
+  <%= @country.nextday_cost %>
+</p>
+
+<p>
+  <strong>Exchange rate:</strong>
+  <%= @country.exchange_rate %>
+</p>
+
+<p>
+  <strong>Require:</strong>
+  <%= @country.require_id %>
+</p>
+
+<p>
+  <strong>Require testq:</strong>
+  <%= @country.require_testq %>
+</p>
+
+<p>
+  <strong>Communist q:</strong>
+  <%= @country.communist_q %>
+</p>
+
+<p>
+  <strong>Req twoid:</strong>
+  <%= @country.req_twoid %>
+</p>
+
+<%= link_to 'Edit', edit_country_path(@country) %> |
+<%= link_to 'Back', countries_path %>
