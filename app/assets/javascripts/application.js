@@ -116,52 +116,21 @@ $( document ).ready(function() {
 
 
 // the code below works, just not as intended, just testing things (just keeps adding).
-	$('.next_day').click(function() {
+	$("input[name='fee_select']").click(function() {
 		var country = $('#send_country option:selected').text();
 
-		var fin = $('.final_amount').val();
+		var send_amount = $('.send_amount[name="' + country + '"]').val();
+		var send_amount = parseFloat(send_amount);
+
+		var cost = $('input[name="fee_select"]:checked').val();
+		var cost = parseFloat(cost);
+
+		var fin = send_amount + cost;
 		var fin = parseFloat(fin);
+		var fin = fin.toFixed(2);
 
-		var send_option = $('input[name=fee_select]', '.send_option[name="' + country + '"]').val();
-		var send_option = parseFloat(send_option);
-
-		var change = fin + send_option;
-		var change = parseFloat(change);
-		
-		 $('.final_amount').val(change);
+		 $('.final_amount[name="' + country + '"]').val(fin);
 	});
-
-
-	$('.mim').click(function() {
-		var country = $('#send_country option:selected').text();
-
-		var fin = $('.final_amount').val();
-		var fin = parseFloat(fin);
-
-		var send_option = $('input[name=option]:selected', '.send_option').val();
-		var send_option = parseFloat(send_option);
-
-		var prior_option = $('.next_day').text();
-		var prior_option = parseFloat(prior_option);
-
-		var conv = $('.conversion_amount').val();
-		var conv = parseFloat(conv);
-
-		var mim = $('.mim_amnt[name="' + country + '"]').val();
-
-		if (con !== fin ) {
-			
-		}
-
-		var change1 = fin - prior_option;
-		$('.final_amount').val(change1);
-
-		var change2 = fin + send_option;
-		var change2 = parseFloat(change2);
-		
-		$('.final_amount').val(change2);
-});
-
 
 // This code works, it changes the form to the current country
 	$('.send_amount').focus(function() {
