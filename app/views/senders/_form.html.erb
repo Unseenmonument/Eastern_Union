@@ -39,14 +39,6 @@
 
 		<br>
 
-<!--		<div class="form-check">
-			<label class="form-check-label">
-				<p><input type="radio" class="form-check-input" name="mim" value="5.6" checked> text for stuff 1 </p> <br>
-				<p><input type="radio" class="form-check-input" name="mim" value="2.3"> text for stuff 2 </p><br>
-			</label>
-		</div>  -->
-
-
 		<br>
 
 		<div id="send_country">
@@ -86,22 +78,75 @@
 				<br>
 
 				<div class="send_option" name="<%= c.name %>">
+					<!-- Money in Minutes Tier 1 -->
 					<div class="form-check">
 						<label class="form-check-label">
 					  		<input type="radio" class="form-check-input" name="fee_select" value="<%= c.mim_cost %>" >
-					  			<span>Cost: $<span class="mim_amnt" name="<%= c.name %>" value="<%= c.mim_cost %>" > <%= c.mim_cost %> </span>
+					  			<span>Cost: $<span class="mim_amnt" name="<%= c.name %>" value="<%= c.mim_tier1_cost %>" ><%= c.mim_tier1_cost %> </span>
 						    	Money-In-Minutes - Money will be available in 15 to 30 minutes.</span>
 					    </label>
 					</div>
+					<!-- Money in Minutes Tier 2 -->
+					<div class="form-check">
+						<label class="form-check-label">
+					  		<input type="radio" class="form-check-input" name="fee_select" value="<%= c.mim_cost %>" >
+					  			<span>Cost: $<span class="mim_tier2_amnt" name="<%= c.name %>" value="<%= c.mim_tier2_cost %>" ><%= c.mim_tier2_cost %> </span>
+						    	Money-In-Minutes - Money will be available in 15 to 30 minutes.</span>
+					    </label>
+					</div>
+					<!-- Money in Minutes Tier 3 -->
+					<div class="form-check">
+						<label class="form-check-label">
+					  		<input type="radio" class="form-check-input" name="fee_select" value="<%= c.mim_cost %>" >
+					  			<span>Cost: $<span class="mim_amnt" name="<%= c.name %>" value="<%= c.mim_tier3_cost %>" ><%= c.mim_tier3_cost %> </span>
+						    	Money-In-Minutes - Money will be available in 15 to 30 minutes.</span>
+					    </label>
+					</div>
+					<!-- Money in Minutes Tier 4 -->
+					<div class="form-check">
+						<label class="form-check-label">
+					  		<input type="radio" class="form-check-input" name="fee_select" value="<%= c.mim_cost %>" >
+					  			<span>Cost: $<span class="mim_amnt" name="<%= c.name %>" value="<%= c.mim_tier4_cost %>" ><%= c.mim_tier4_cost %> </span>
+						    	Money-In-Minutes - Money will be available in 15 to 30 minutes.</span>
+					    </label>
+					</div>
+
+					<!-- NextDay Tier 1> -->
 					<div class="form-check">    	  	
 						<label class="form-check-label">
 						    <input type="radio" class="form-check-input" name="fee_select" value="<%= c.nextday_cost %>">
-						    	<span>Cost: $<span class="nxtday_amnt" name="<%= c.name %>" value="<%= c.nextday_cost %>"> <%= c.nextday_cost %> </span>
+						    	<span>Cost: $<span class="nxtday_amnt" name="<%= c.name %>" value="<%= c.nextday_tier1_cost %>"><%= c.nextday_tier1_cost %> </span>
 						    	Next-Day Service - Money will be available at the start of the next day.</span>
 						</label>
 					</div>
+					<!-- NextDay Tier 2> -->
+					<div class="form-check">    	  	
+						<label class="form-check-label">
+						    <input type="radio" class="form-check-input" name="fee_select" value="<%= c.nextday_cost %>">
+						    	<span>Cost: $<span class="nxtday_amnt" name="<%= c.name %>" value="<%= c.nextday_tier2_cost %>"><%= c.nextday_tier2_cost %> </span>
+						    	Next-Day Service - Money will be available at the start of the next day.</span>
+						</label>
+					</div>
+					<!-- NextDay Tier 1> -->
+					<div class="form-check">    	  	
+						<label class="form-check-label">
+						    <input type="radio" class="form-check-input" name="fee_select" value="<%= c.nextday_cost %>">
+						    	<span>Cost: $<span class="nxtday_amnt" name="<%= c.name %>" value="<%= c.nextday_tier3_cost %>"><%= c.nextday_tier3_cost %> </span>
+						    	Next-Day Service - Money will be available at the start of the next day.</span>
+						</label>
+					</div>
+					<!-- NextDay Tier 1> -->
+					<div class="form-check">    	  	
+						<label class="form-check-label">
+						    <input type="radio" class="form-check-input" name="fee_select" value="<%= c.nextday_cost %>">
+						    	<span>Cost: $<span class="nxtday_amnt" name="<%= c.name %>" value="<%= c.nextday_tier4_cost %>"><%= c.nextday_tier4_cost %> </span>
+						    	Next-Day Service - Money will be available at the start of the next day.</span>
+						</label>
+					</div>
+
 				</div>
 			</div>
+
 		<% end %>
 
 		<br>

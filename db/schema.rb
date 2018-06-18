@@ -10,19 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180609060853) do
+ActiveRecord::Schema.define(version: 20180618174547) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
-    t.float "mim_cost"
-    t.float "nextday_cost"
-    t.float "exchange_rate"
     t.boolean "require_id"
     t.boolean "require_testq"
     t.boolean "communist_q"
     t.boolean "req_twoid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "mim_tier1_cost"
+    t.integer "mim_tier2_cost"
+    t.integer "mim_tier3_cost"
+    t.integer "mim_tier4_cost"
+    t.integer "nextday_tier1_cost"
+    t.integer "nextday_tier2_cost"
+    t.integer "nextday_tier3_cost"
+    t.integer "nextday_tier4_cost"
+    t.integer "exchange_rate"
   end
 
   create_table "r_moneys", force: :cascade do |t|
