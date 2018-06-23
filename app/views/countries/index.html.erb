@@ -6,8 +6,22 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th>Mim cost</th>
-      <th>Nextday cost</th>
+      <th>Mim t1 cost</th>
+      <th>Mim t1 limit</th>
+      <th>Mim t2 cost</th>
+      <th>Mim t2 limit</th>
+      <th>Mim t3 cost</th>
+      <th>Mim t3 limit</th>
+      <th>Mim t4 cost</th>
+      <th>Mim t4 limit</th>
+      <th>Nextday t1 cost</th>
+      <th>Nextday t1 limit</th>
+      <th>Nextday t2 cost</th>
+      <th>Nextday t2 limit</th>
+      <th>Nextday t3 cost</th>
+      <th>Nextday t3 limit</th>
+      <th>Nextday t4 cost</th>
+      <th>Nextday t4 limit</th>
       <th>Exchange rate</th>
       <th>Require</th>
       <th>Require testq</th>
@@ -21,8 +35,22 @@
     <% @countries.each do |country| %>
       <tr>
         <td><%= country.name %></td>
-        <td><%= country.mim_cost %></td>
-        <td><%= country.nextday_cost %></td>
+        <td><%= country.mim_tier1_cost %></td>
+        <td><%= country.mim_tier1_limit %></td>
+        <td><%= country.mim_tier2_cost %></td>
+        <td><%= country.mim_tier2_limit %></td>
+        <td><%= country.mim_tier3_cost %></td>
+        <td><%= country.mim_tier3_limit %></td>
+        <td><%= country.mim_tier4_cost %></td>
+        <td><%= country.mim_tier4_limit %></td>
+        <td><%= country.nextday_tier1_cost %></td>
+        <td><%= country.nextday_tier1_limit %></td>
+        <td><%= country.nextday_tier2_cost %></td>
+        <td><%= country.nextday_tier2_limit %></td>
+        <td><%= country.nextday_tier3_cost %></td>
+        <td><%= country.nextday_tier3_limit %></td>
+        <td><%= country.nextday_tier4_cost %></td>
+        <td><%= country.nextday_tier4_limit %></td>
         <td><%= country.exchange_rate %></td>
         <td><%= country.require_id %></td>
         <td><%= country.require_testq %></td>

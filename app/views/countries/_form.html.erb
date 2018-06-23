@@ -5,8 +5,26 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :mim_cost %>
-    <%= f.input :nextday_cost %>
+    
+    <%= f.input :mim_tier1_cost %>
+    <%= f.input :mim_tier1_limit %>
+    <%= f.input :mim_tier2_cost %>
+    <%= f.input :mim_tier2_limit %>
+    <%= f.input :mim_tier3_cost %>
+    <%= f.input :mim_tier3_limit %>
+    <%= f.input :mim_tier4_cost %>
+    <%= f.input :mim_tier4_limit %>
+    
+    <%= f.input :nextday_tier1_cost %>
+    <%= f.input :nextday_tier1_limit %>
+    <%= f.input :nextday_tier2_cost %>
+    <%= f.input :nextday_tier2_limit %>
+    <%= f.input :nextday_tier3_cost %>
+    <%= f.input :nextday_tier3_limit %>
+    <%= f.input :nextday_tier4_cost %>
+    <%= f.input :nextday_tier4_limit %>
+
+
     <%= f.input :exchange_rate %>
     <%= f.input :require_id %>
     <%= f.input :require_testq %>

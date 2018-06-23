@@ -69,6 +69,10 @@ class CountriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def country_params
-      params.require(:country).permit(:name, :mim_cost, :nextday_cost, :exchange_rate, :require_id, :require_testq, :communist_q, :req_twoid)
+      params.require(:country).permit(:name, :mim_tier1_cost, :mim_tier1_limit, :mim_tier2_cost,
+        :mim_tier2_limit, :mim_tier3_cost, :mim_tier3_limit, :mim_tier4_cost, :mim_tier4_limit,
+        :nextday_tier1_cost, :nextday_tier1_limit, :nextday_tier2_cost, :nextday_tier2_limit,
+        :nextday_tier3_cost, :nextday_tier3_limit, :nextday_tier4_cost, :nextday_tier4_limit, 
+        :exchange_rate, :require_id, :require_testq, :communist_q, :req_twoid)
     end
 end

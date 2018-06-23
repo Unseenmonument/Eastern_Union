@@ -20,15 +20,23 @@ ActiveRecord::Schema.define(version: 20180618174547) do
     t.boolean "req_twoid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "mim_tier1_cost"
-    t.integer "mim_tier2_cost"
-    t.integer "mim_tier3_cost"
-    t.integer "mim_tier4_cost"
-    t.integer "nextday_tier1_cost"
-    t.integer "nextday_tier2_cost"
-    t.integer "nextday_tier3_cost"
-    t.integer "nextday_tier4_cost"
-    t.integer "exchange_rate"
+    t.decimal "mim_tier1_cost"
+    t.decimal "mim_tier1_limit"
+    t.decimal "mim_tier2_cost"
+    t.decimal "mim_tier2_limit"
+    t.decimal "mim_tier3_cost"
+    t.decimal "mim_tier3_limit"
+    t.decimal "mim_tier4_cost"
+    t.decimal "mim_tier4_limit"
+    t.decimal "nextday_tier1_cost"
+    t.decimal "nextday_tier1_limit"
+    t.decimal "nextday_tier2_cost"
+    t.decimal "nextday_tier2_limit"
+    t.decimal "nextday_tier3_cost"
+    t.decimal "nextday_tier3_limit"
+    t.decimal "nextday_tier4_cost"
+    t.decimal "nextday_tier4_limit"
+    t.decimal "exchange_rate"
   end
 
   create_table "r_moneys", force: :cascade do |t|
