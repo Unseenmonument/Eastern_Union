@@ -84,7 +84,7 @@ $( document ).ready(function() {
 	$(".final_amount").val("0.00")
 
 
-// This code below adds the aount you're sending and calculates the conversion amount as well as the final amount
+// This code below adds the amount you're sending and calculates the conversion amount as well as the final amount
 	$('.conversion_amount').focus(function(e) {
 		var country = $('#send_country option:selected').text();
 		var send = $('.send_amount[name="' + country + '"]').val();
@@ -114,8 +114,20 @@ $( document ).ready(function() {
 		});
 	});
 
+	$(".send_amount").focus().change(function() {
+		var country = $('#send_country option:selected').text();
+		var fin = $('.final_amount[name="' + country + '"]').val();
+		var send = $('.send_amount[name="' + country + '"]').val();
 
-// the code below works, just not as intended, just testing things (just keeps adding).
+		if(send == 0)
+			$('.final_amount[name="' + country + '"]').val("0.00");
+
+	});
+
+
+
+
+// the code below works?
 	$("input[name='fee_select']").click(function() {
 		var country = $('#send_country option:selected').text();
 
