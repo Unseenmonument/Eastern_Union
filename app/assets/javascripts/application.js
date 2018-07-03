@@ -33,7 +33,17 @@ $( document ).ready(function() {
 
 	$('.country_input').hide();
 
+// hides the various payment tiers for sending money
+	$('.mim_tier1').hide();
+	$('.mim_tier2').hide();	
+	$('.mim_tier3').hide();
+	$('.mim_tier4').hide();
 
+	$('.nextday_tier1').hide();
+	$('.nextday_tier2').hide();
+	$('.nextday_tier3').hide();
+	$('.nextday_tier4').hide();
+// Ends this section	
 	
 	$('#reciever_name_alt').hide();
 	$('#reciever_name_uncheck').hide();
@@ -119,8 +129,19 @@ $( document ).ready(function() {
 		var fin = $('.final_amount[name="' + country + '"]').val();
 		var send = $('.send_amount[name="' + country + '"]').val();
 
-		if(send == 0)
+		var m_tier1 = $(".mim_tier1").val();
+		var m_tier2 = $(".mim_tier2").val();
+		var m_tier3 = $(".mim_tier3").val();
+		var m_tier4 = $(".mim_tier4").val();
+
+		if(send == 0) {
 			$('.final_amount[name="' + country + '"]').val("0.00");
+			$('.mim_amnt[name="' + country + '"]').val()
+		} else if (send > 0 && send < m_tier1) {
+			alert('else if works');
+			$('.mim_tier1').show();
+		};
+
 
 	});
 
