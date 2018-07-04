@@ -124,19 +124,21 @@ $( document ).ready(function() {
 		});
 	});
 
-	$(".send_amount").focus().change(function() {
+	$(".send_amount").change(function() {
 		var country = $('#send_country option:selected').text();
 		var fin = $('.final_amount[name="' + country + '"]').val();
 		var send = $('.send_amount[name="' + country + '"]').val();
 
-		var m_tier1 = $(".mim_tier1").val();
-		var m_tier2 = $(".mim_tier2").val();
-		var m_tier3 = $(".mim_tier3").val();
-		var m_tier4 = $(".mim_tier4").val();
+		var m_tier1 = $('.mim_tier1[name="' + country + '"]').val();
+		var m_tier2 = $('.mim_tier2[name="' + country + '"]').val();
+		var m_tier3 = $('.mim_tier3[name="' + country + '"]').val();
+		var m_tier4 = $('.mim_tier4[name="' + country + '"]').val();
 
 		if(send == 0) {
 			$('.final_amount[name="' + country + '"]').val("0.00");
 			$('.mim_amnt[name="' + country + '"]').val()
+			alert("value is: " + country );
+			alert("value is: " + m_tier1 );
 		} else if (send > 0 && send < m_tier1) {
 			alert('else if works');
 			$('.mim_tier1').show();
@@ -144,8 +146,6 @@ $( document ).ready(function() {
 
 
 	});
-
-
 
 
 // the code below works?
