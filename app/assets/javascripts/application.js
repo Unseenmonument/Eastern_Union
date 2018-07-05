@@ -129,21 +129,120 @@ $( document ).ready(function() {
 		var fin = $('.final_amount[name="' + country + '"]').val();
 		var send = $('.send_amount[name="' + country + '"]').val();
 
-		var m_tier1 = $('.mim_tier1[name="' + country + '"]').val();
-		var m_tier2 = $('.mim_tier2[name="' + country + '"]').val();
-		var m_tier3 = $('.mim_tier3[name="' + country + '"]').val();
-		var m_tier4 = $('.mim_tier4[name="' + country + '"]').val();
+		var m_tier1 = $('.mim_tier1[name="' + country + '"]').attr("value");
+		var m_tier1 = parseInt(m_tier1);
 
-		if(send == 0) {
-			$('.final_amount[name="' + country + '"]').val("0.00");
-			$('.mim_amnt[name="' + country + '"]').val()
-			alert("value is: " + country );
-			alert("value is: " + m_tier1 );
-		} else if (send > 0 && send < m_tier1) {
-			alert('else if works');
-			$('.mim_tier1').show();
-		};
+		var m_tier2 = $('.mim_tier2[name="' + country + '"]').attr("value");
+		var m_tier2 = parseInt(m_tier2);
 
+		var m_tier3 = $('.mim_tier3[name="' + country + '"]').attr("value");
+		var m_tier3 = parseInt(m_tier3);
+
+		var m_tier4 = $('.mim_tier4[name="' + country + '"]').attr("value");
+		var m_tier4 = parseInt(m_tier4);
+
+		var base = 0;
+
+		if (send == base) {
+//			$('.final_amount[name="' + country + '"]').val("0.00");
+			
+			$('.mim_tier1').hide();
+			$('.mim_tier2').hide();	
+			$('.mim_tier3').hide();
+			$('.mim_tier4').hide();
+
+			$('.nextday_tier1').hide();
+			$('.nextday_tier2').hide();
+			$('.nextday_tier3').hide();
+			$('.nextday_tier4').hide();
+
+		} else if (send > base && send < m_tier1) {
+			alert('else if 1 works');
+			alert('max value is: ' + m_tier1);
+			console.log('max value is: ' + m_tier3);
+
+			$('.mim_tier1').hide();
+			$('.mim_tier2').hide();	
+			$('.mim_tier3').hide();
+			$('.mim_tier4').hide();
+
+			$('.nextday_tier1').hide();
+			$('.nextday_tier2').hide();
+			$('.nextday_tier3').hide();
+			$('.nextday_tier4').hide();
+
+			$('.mim_tier1[name="' + country + '"]').show();
+			$('.nextday_tier1[name="' + country + '"]').show();
+		} else if (send > m_tier1 && send < m_tier2) {
+			alert('else if 2 works');
+			alert('max value is: ' + m_tier2);
+			alert('max value for next tier is: ' + m_tier3);
+			console.log('max value is: ' + m_tier2);
+
+			$('.mim_tier1').hide();
+			$('.mim_tier2').hide();	
+			$('.mim_tier3').hide();
+			$('.mim_tier4').hide();
+
+			$('.nextday_tier1').hide();
+			$('.nextday_tier2').hide();
+			$('.nextday_tier3').hide();
+			$('.nextday_tier4').hide();
+
+			$('.mim_tier2[name="' + country + '"]').show();
+			$('.nextday_tier2[name="' + country + '"]').show();
+		} else if (send > m_tier2 && send < m_tier3) {
+			alert('else if 3 works');
+			alert('max value is: ' + m_tier3);
+			console.log('max value is: ' + m_tier3);
+
+			$('.mim_tier1').hide();
+			$('.mim_tier2').hide();	
+			$('.mim_tier3').hide();
+			$('.mim_tier4').hide();
+
+			$('.nextday_tier1').hide();
+			$('.nextday_tier2').hide();
+			$('.nextday_tier3').hide();
+			$('.nextday_tier4').hide();
+
+			$('.mim_tier3[name="' + country + '"]').show();
+			$('.nextday_tier3[name="' + country + '"]').show();
+		} else if (send > m_tier3 && send < m_tier4) {
+			alert('else if 4 works');
+			alert('max value is: ' + m_tier4);
+			console.log('max value is: ' + m_tier4);
+
+
+			$('.mim_tier1').hide();
+			$('.mim_tier2').hide();	
+			$('.mim_tier3').hide();
+			$('.mim_tier4').hide();
+
+			$('.nextday_tier1').hide();
+			$('.nextday_tier2').hide();
+			$('.nextday_tier3').hide();
+			$('.nextday_tier4').hide();
+
+			$('.mim_tier4[name="' + country + '"]').show();
+			$('.nextday_tier4[name="' + country + '"]').show();
+		} else if (send > m_tier4) {
+			alert('The amount you entered is too high, please enter a lesser value.');
+
+			$('.mim_tier1').hide();
+			$('.mim_tier2').hide();	
+			$('.mim_tier3').hide();
+			$('.mim_tier4').hide();
+
+			$('.nextday_tier1').hide();
+			$('.nextday_tier2').hide();
+			$('.nextday_tier3').hide();
+			$('.nextday_tier4').hide();
+
+//			These code below doesn't work yet
+//			$('.final_amount[name="' + country + '"]').val("0.00");
+//			$('.conversion_amount[name="' + country + '"]').val("0.00");
+		} 
 
 	});
 
