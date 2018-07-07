@@ -1,0 +1,63 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Senders</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Customer Number</th>
+      <th>First Name</th>
+      <th>Middle Name</th>
+      <th>Last Name</th>
+      <th>Paternal Last Name</th>
+      <th>Maternal Last Name</th>
+      <th>Phone Number</th>
+      <th>Email</th>
+      <th>Address</th>
+      <th>Zip Code</th>
+      <th>State</th>
+      <th>ID Type</th>
+      <th>License Number</th>
+      <th>Passport Number</th>
+      <th>Government Id Number</th>
+      <th>Date of Birth</th>
+      <th>License State</th>
+      <th>Passport Country</th>
+      <th>Country Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @senders.each do |sender| %>
+      <tr>
+        <td><%= sender.customer_number %></td>
+        <td><%= sender.f_name %></td>
+        <td><%= sender.m_name %></td>
+        <td><%= sender.l_name %></td>
+        <td><%= sender.pat_name %></td>
+        <td><%= sender.mat_name %></td>
+        <td><%= sender.phone_number %></td>
+        <td><%= sender.email %></td>
+        <td><%= sender.address %></td>
+        <td><%= sender.address_zip %></td>
+        <td><%= sender.address_state %></td>
+        <td><%= sender.id_type %></td>
+        <td><%= sender.lic_number %></td>
+        <td><%= sender.pass_number %></td>
+        <td><%= sender.gov_number %></td>
+        <td><%= sender.id_dob %></td>
+        <td><%= sender.lic_state %></td>
+        <td><%= sender.pass_nation %></td>
+        <td><%= sender.gov_nation %></td>
+        <td><%= link_to 'Show', sender %></td>
+        <td><%= link_to 'Edit', edit_sender_path(sender) %></td>
+        <td><%= link_to 'Destroy', sender, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Sender', new_sender_path %>

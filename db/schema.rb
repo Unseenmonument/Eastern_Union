@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180618174547) do
+ActiveRecord::Schema.define(version: 20180706174055) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -50,13 +50,15 @@ ActiveRecord::Schema.define(version: 20180618174547) do
   end
 
   create_table "senders", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.string "f_name"
     t.string "m_name"
     t.string "l_name"
     t.string "pat_name"
     t.string "mat_name"
     t.string "address"
-    t.integer "address_zip"
+    t.string "address_zip"
     t.string "address_state"
     t.string "phone_number"
     t.string "email"
@@ -67,8 +69,6 @@ ActiveRecord::Schema.define(version: 20180618174547) do
     t.string "gov_number"
     t.date "id_dob"
     t.string "lic_state"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.string "pass_nation"
     t.string "gov_nation"
     t.string "send_amount"
@@ -78,15 +78,15 @@ ActiveRecord::Schema.define(version: 20180618174547) do
     t.string "payout_state"
     t.string "reciever_f_name"
     t.string "reciever_m_name"
+    t.string "reciever_l_name"
     t.string "reciever_pat_name"
     t.string "reciever_mat_name"
     t.string "test_question"
     t.string "test_answer"
-    t.string "customer_number"
+    t.string "customer_numer"
     t.integer "mtcn"
     t.date "send_date"
     t.date "payout_date"
-    t.string "reciever_l_name"
     t.string "reciever_country"
   end
 

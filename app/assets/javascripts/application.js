@@ -95,7 +95,7 @@ $( document ).ready(function() {
 
 
 // This code below adds the amount you're sending and calculates the conversion amount as well as the final amount
-	$('.conversion_amount').focus(function(e) {
+/*	$('.conversion_amount').focus(function(e) {
 		var country = $('#send_country option:selected').text();
 		var send = $('.send_amount[name="' + country + '"]').val();
 		var send = parseFloat(send);
@@ -111,7 +111,7 @@ $( document ).ready(function() {
 
 		var con_amount = con;
 		var con_amount = parseFloat(con_amount);
-		var send_option = $('.mim_amnt[name="' + country + '"]').text();
+		var send_option = $('.mim_tier1_amnt[name="' + country + '"]').text();
 
 		var send_option = parseFloat(send_option);
 
@@ -123,129 +123,7 @@ $( document ).ready(function() {
 			$('input[name=fee_select]:first', '.send_option[name="' + country + '"]').attr('checked', true);
 		});
 	});
-
-	$(".send_amount").change(function() {
-		var country = $('#send_country option:selected').text();
-		var fin = $('.final_amount[name="' + country + '"]').val();
-		var send = $('.send_amount[name="' + country + '"]').val();
-
-		var m_tier1 = $('.mim_tier1[name="' + country + '"]').attr("value");
-		var m_tier1 = parseInt(m_tier1);
-
-		var m_tier2 = $('.mim_tier2[name="' + country + '"]').attr("value");
-		var m_tier2 = parseInt(m_tier2);
-
-		var m_tier3 = $('.mim_tier3[name="' + country + '"]').attr("value");
-		var m_tier3 = parseInt(m_tier3);
-
-		var m_tier4 = $('.mim_tier4[name="' + country + '"]').attr("value");
-		var m_tier4 = parseInt(m_tier4);
-
-		var base = 0;
-
-		if (send == base) {
-//			$('.final_amount[name="' + country + '"]').val("0.00");
-			
-			$('.mim_tier1').hide();
-			$('.mim_tier2').hide();	
-			$('.mim_tier3').hide();
-			$('.mim_tier4').hide();
-
-			$('.nextday_tier1').hide();
-			$('.nextday_tier2').hide();
-			$('.nextday_tier3').hide();
-			$('.nextday_tier4').hide();
-
-		} else if (send > base && send < m_tier1) {
-			alert('else if 1 works');
-			alert('max value is: ' + m_tier1);
-			console.log('max value is: ' + m_tier3);
-
-			$('.mim_tier1').hide();
-			$('.mim_tier2').hide();	
-			$('.mim_tier3').hide();
-			$('.mim_tier4').hide();
-
-			$('.nextday_tier1').hide();
-			$('.nextday_tier2').hide();
-			$('.nextday_tier3').hide();
-			$('.nextday_tier4').hide();
-
-			$('.mim_tier1[name="' + country + '"]').show();
-			$('.nextday_tier1[name="' + country + '"]').show();
-		} else if (send > m_tier1 && send < m_tier2) {
-			alert('else if 2 works');
-			alert('max value is: ' + m_tier2);
-			alert('max value for next tier is: ' + m_tier3);
-			console.log('max value is: ' + m_tier2);
-
-			$('.mim_tier1').hide();
-			$('.mim_tier2').hide();	
-			$('.mim_tier3').hide();
-			$('.mim_tier4').hide();
-
-			$('.nextday_tier1').hide();
-			$('.nextday_tier2').hide();
-			$('.nextday_tier3').hide();
-			$('.nextday_tier4').hide();
-
-			$('.mim_tier2[name="' + country + '"]').show();
-			$('.nextday_tier2[name="' + country + '"]').show();
-		} else if (send > m_tier2 && send < m_tier3) {
-			alert('else if 3 works');
-			alert('max value is: ' + m_tier3);
-			console.log('max value is: ' + m_tier3);
-
-			$('.mim_tier1').hide();
-			$('.mim_tier2').hide();	
-			$('.mim_tier3').hide();
-			$('.mim_tier4').hide();
-
-			$('.nextday_tier1').hide();
-			$('.nextday_tier2').hide();
-			$('.nextday_tier3').hide();
-			$('.nextday_tier4').hide();
-
-			$('.mim_tier3[name="' + country + '"]').show();
-			$('.nextday_tier3[name="' + country + '"]').show();
-		} else if (send > m_tier3 && send < m_tier4) {
-			alert('else if 4 works');
-			alert('max value is: ' + m_tier4);
-			console.log('max value is: ' + m_tier4);
-
-
-			$('.mim_tier1').hide();
-			$('.mim_tier2').hide();	
-			$('.mim_tier3').hide();
-			$('.mim_tier4').hide();
-
-			$('.nextday_tier1').hide();
-			$('.nextday_tier2').hide();
-			$('.nextday_tier3').hide();
-			$('.nextday_tier4').hide();
-
-			$('.mim_tier4[name="' + country + '"]').show();
-			$('.nextday_tier4[name="' + country + '"]').show();
-		} else if (send > m_tier4) {
-			alert('The amount you entered is too high, please enter a lesser value.');
-
-			$('.mim_tier1').hide();
-			$('.mim_tier2').hide();	
-			$('.mim_tier3').hide();
-			$('.mim_tier4').hide();
-
-			$('.nextday_tier1').hide();
-			$('.nextday_tier2').hide();
-			$('.nextday_tier3').hide();
-			$('.nextday_tier4').hide();
-
-//			These code below doesn't work yet
-//			$('.final_amount[name="' + country + '"]').val("0.00");
-//			$('.conversion_amount[name="' + country + '"]').val("0.00");
-		} 
-
-	});
-
+*/	
 
 // the code below works?
 	$("input[name='fee_select']").click(function() {
@@ -272,4 +150,166 @@ $( document ).ready(function() {
 		$('.country_input[value="' + country + '"]').show();
 	});
 	
+
+// This code changes which "send options" are displayed onces you've entered in the amount
+	$(".send_amount").change(function() {
+		
+		var country = $('#send_country option:selected').text();
+		var fin = $('.final_amount[name="' + country + '"]').val();
+		var send = $('.send_amount[name="' + country + '"]').val();
+		var send = parseFloat(send);
+
+		var exchange = $('.exchange_rate[name="' + country + '"]').text();
+		var exchange = parseFloat(exchange);
+
+		var con = send * exchange;
+		var con = parseFloat(con);
+		var con = con.toFixed(2);
+
+		//Put the conversion amount in the correct field
+		$('.conversion_amount[name="' + country + '"]').val(con);
+
+		var con_amount = con;
+		var con_amount = parseFloat(con_amount);
+
+		var m_tier1 = $('.mim_tier1[name="' + country + '"]').attr("value");
+		var m_tier1 = parseFloat(m_tier1);
+
+		var m_tier2 = $('.mim_tier2[name="' + country + '"]').attr("value");
+		var m_tier2 = parseFloat(m_tier2);
+
+		var m_tier3 = $('.mim_tier3[name="' + country + '"]').attr("value");
+		var m_tier3 = parseFloat(m_tier3);
+
+		var m_tier4 = $('.mim_tier4[name="' + country + '"]').attr("value");
+		var m_tier4 = parseFloat(m_tier4);
+
+		var base = 0;
+
+		$('.send_option').show(function() {
+			$('input[name=fee_select]:first', '.send_option[name="' + country + '"]').attr('checked', true);
+		});
+
+		if (send == base) {
+//			$('.final_amount[name="' + country + '"]').val("0.00");
+			
+			$('.mim_tier1').hide();
+			$('.mim_tier2').hide();	
+			$('.mim_tier3').hide();
+			$('.mim_tier4').hide();
+
+			$('.nextday_tier1').hide();
+			$('.nextday_tier2').hide();
+			$('.nextday_tier3').hide();
+			$('.nextday_tier4').hide();
+
+			$('.final_amount[name="' + country + '"]').val("0.00");
+
+		} else if (send > base && send < m_tier1) {
+						
+			$('.mim_tier1').hide();
+			$('.mim_tier2').hide();	
+			$('.mim_tier3').hide();
+			$('.mim_tier4').hide();
+
+			$('.nextday_tier1').hide();
+			$('.nextday_tier2').hide();
+			$('.nextday_tier3').hide();
+			$('.nextday_tier4').hide();
+
+			var send_option = $('.mim_tier1_amnt[name="' + country + '"]').text();
+			var send_option = parseFloat(send_option);
+
+			var fin = con_amount + send_option;
+			var fin = parseFloat(fin);
+			var fin = fin.toFixed(2);
+			$('.final_amount[name="' + country + '"]').val(fin);
+
+			$('.mim_tier1[name="' + country + '"]').show();
+			$('.nextday_tier1[name="' + country + '"]').show();
+		} else if (send > m_tier1 && send < m_tier2) {
+						
+			$('.mim_tier1').hide();
+			$('.mim_tier2').hide();	
+			$('.mim_tier3').hide();
+			$('.mim_tier4').hide();
+
+			$('.nextday_tier1').hide();
+			$('.nextday_tier2').hide();
+			$('.nextday_tier3').hide();
+			$('.nextday_tier4').hide();
+
+			var send_option = $('.mim_tier2_amnt[name="' + country + '"]').text();
+			var send_option = parseFloat(send_option);
+
+			var fin = con_amount + send_option;
+			var fin = parseFloat(fin);
+			var fin = fin.toFixed(2);
+			$('.final_amount[name="' + country + '"]').val(fin);
+
+			$('.mim_tier2[name="' + country + '"]').show();
+			$('.nextday_tier2[name="' + country + '"]').show();
+		} else if (send > m_tier2 && send < m_tier3) {
+						
+			$('.mim_tier1').hide();
+			$('.mim_tier2').hide();	
+			$('.mim_tier3').hide();
+			$('.mim_tier4').hide();
+
+			$('.nextday_tier1').hide();
+			$('.nextday_tier2').hide();
+			$('.nextday_tier3').hide();
+			$('.nextday_tier4').hide();
+
+			var send_option = $('.mim_tier3_amnt[name="' + country + '"]').text();
+			var send_option = parseFloat(send_option);
+
+			var fin = con_amount + send_option;
+			var fin = parseFloat(fin);
+			var fin = fin.toFixed(2);
+			$('.final_amount[name="' + country + '"]').val(fin);
+
+			$('.mim_tier3[name="' + country + '"]').show();
+			$('.nextday_tier3[name="' + country + '"]').show();
+		} else if (send > m_tier3 && send < m_tier4) {
+						
+			$('.mim_tier1').hide();
+			$('.mim_tier2').hide();	
+			$('.mim_tier3').hide();
+			$('.mim_tier4').hide();
+
+			$('.nextday_tier1').hide();
+			$('.nextday_tier2').hide();
+			$('.nextday_tier3').hide();
+			$('.nextday_tier4').hide();
+
+			var send_option = $('.mim_tier4_amnt[name="' + country + '"]').text();
+			var send_option = parseFloat(send_option);
+
+			var fin = con_amount + send_option;
+			var fin = parseFloat(fin);
+			var fin = fin.toFixed(2);
+			$('.final_amount[name="' + country + '"]').val(fin);
+
+			$('.mim_tier4[name="' + country + '"]').show();
+			$('.nextday_tier4[name="' + country + '"]').show();
+		} else if (send > m_tier4) {
+			alert('The amount you entered is too high, please enter a lesser value.');
+
+			$('.mim_tier1').hide();
+			$('.mim_tier2').hide();	
+			$('.mim_tier3').hide();
+			$('.mim_tier4').hide();
+
+			$('.nextday_tier1').hide();
+			$('.nextday_tier2').hide();
+			$('.nextday_tier3').hide();
+			$('.nextday_tier4').hide();
+
+//			These code below doesn't work yet
+//			$('.final_amount[name="' + country + '"]').val("0.00");
+//			$('.conversion_amount[name="' + country + '"]').val("0.00");
+		} 
+	});
+
 });
