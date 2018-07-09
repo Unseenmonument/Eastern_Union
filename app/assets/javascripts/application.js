@@ -93,39 +93,7 @@ $( document ).ready(function() {
 	$(".conversion_amount").val(" 0.00");
 	$(".final_amount").val("0.00")
 
-
-// This code below adds the amount you're sending and calculates the conversion amount as well as the final amount
-/*	$('.conversion_amount').focus(function(e) {
-		var country = $('#send_country option:selected').text();
-		var send = $('.send_amount[name="' + country + '"]').val();
-		var send = parseFloat(send);
-
-		var exchange = $('.exchange_rate[name="' + country + '"]').text();
-		var exchange = parseFloat(exchange);
-
-		var con = send * exchange;
-		var con = parseFloat(con);
-		var con = con.toFixed(2);
-
-		$('.conversion_amount[name="' + country + '"]').val(con);
-
-		var con_amount = con;
-		var con_amount = parseFloat(con_amount);
-		var send_option = $('.mim_tier1_amnt[name="' + country + '"]').text();
-
-		var send_option = parseFloat(send_option);
-
-		var fin = con_amount + send_option;
-		var fin = parseFloat(fin);
-		var fin = fin.toFixed(2);
-		$('.final_amount[name="' + country + '"]').val(fin);
-		$('.send_option').show(function() {
-			$('input[name=fee_select]:first', '.send_option[name="' + country + '"]').attr('checked', true);
-		});
-	});
-*/	
-
-// the code below works?
+// the code below assigns the selected cost of sending money to the final amount.
 	$("input[name='fee_select']").click(function() {
 		var country = $('#send_country option:selected').text();
 
@@ -148,6 +116,12 @@ $( document ).ready(function() {
 		$('#country_input_default').hide();
 		$('.country_input').hide();
 		$('.country_input[value="' + country + '"]').show();
+
+		if ( $('#send_country option:selected').text("") ) {
+			$('#country_input_default').show();
+		} else {
+
+		};
 	});
 	
 
@@ -191,31 +165,10 @@ $( document ).ready(function() {
 		});
 
 		if (send == base) {
-//			$('.final_amount[name="' + country + '"]').val("0.00");
-			
-			$('.mim_tier1').hide();
-			$('.mim_tier2').hide();	
-			$('.mim_tier3').hide();
-			$('.mim_tier4').hide();
-
-			$('.nextday_tier1').hide();
-			$('.nextday_tier2').hide();
-			$('.nextday_tier3').hide();
-			$('.nextday_tier4').hide();
 
 			$('.final_amount[name="' + country + '"]').val("0.00");
 
 		} else if (send > base && send < m_tier1) {
-						
-			$('.mim_tier1').hide();
-			$('.mim_tier2').hide();	
-			$('.mim_tier3').hide();
-			$('.mim_tier4').hide();
-
-			$('.nextday_tier1').hide();
-			$('.nextday_tier2').hide();
-			$('.nextday_tier3').hide();
-			$('.nextday_tier4').hide();
 
 			var send_option = $('.mim_tier1_amnt[name="' + country + '"]').text();
 			var send_option = parseFloat(send_option);
@@ -229,16 +182,6 @@ $( document ).ready(function() {
 			$('.nextday_tier1[name="' + country + '"]').show();
 		} else if (send > m_tier1 && send < m_tier2) {
 						
-			$('.mim_tier1').hide();
-			$('.mim_tier2').hide();	
-			$('.mim_tier3').hide();
-			$('.mim_tier4').hide();
-
-			$('.nextday_tier1').hide();
-			$('.nextday_tier2').hide();
-			$('.nextday_tier3').hide();
-			$('.nextday_tier4').hide();
-
 			var send_option = $('.mim_tier2_amnt[name="' + country + '"]').text();
 			var send_option = parseFloat(send_option);
 
@@ -251,16 +194,6 @@ $( document ).ready(function() {
 			$('.nextday_tier2[name="' + country + '"]').show();
 		} else if (send > m_tier2 && send < m_tier3) {
 						
-			$('.mim_tier1').hide();
-			$('.mim_tier2').hide();	
-			$('.mim_tier3').hide();
-			$('.mim_tier4').hide();
-
-			$('.nextday_tier1').hide();
-			$('.nextday_tier2').hide();
-			$('.nextday_tier3').hide();
-			$('.nextday_tier4').hide();
-
 			var send_option = $('.mim_tier3_amnt[name="' + country + '"]').text();
 			var send_option = parseFloat(send_option);
 
@@ -273,16 +206,6 @@ $( document ).ready(function() {
 			$('.nextday_tier3[name="' + country + '"]').show();
 		} else if (send > m_tier3 && send < m_tier4) {
 						
-			$('.mim_tier1').hide();
-			$('.mim_tier2').hide();	
-			$('.mim_tier3').hide();
-			$('.mim_tier4').hide();
-
-			$('.nextday_tier1').hide();
-			$('.nextday_tier2').hide();
-			$('.nextday_tier3').hide();
-			$('.nextday_tier4').hide();
-
 			var send_option = $('.mim_tier4_amnt[name="' + country + '"]').text();
 			var send_option = parseFloat(send_option);
 
@@ -295,20 +218,8 @@ $( document ).ready(function() {
 			$('.nextday_tier4[name="' + country + '"]').show();
 		} else if (send > m_tier4) {
 			alert('The amount you entered is too high, please enter a lesser value.');
-
-			$('.mim_tier1').hide();
-			$('.mim_tier2').hide();	
-			$('.mim_tier3').hide();
-			$('.mim_tier4').hide();
-
-			$('.nextday_tier1').hide();
-			$('.nextday_tier2').hide();
-			$('.nextday_tier3').hide();
-			$('.nextday_tier4').hide();
-
-//			These code below doesn't work yet
-//			$('.final_amount[name="' + country + '"]').val("0.00");
-//			$('.conversion_amount[name="' + country + '"]').val("0.00");
+			$('.final_amount[name="' + country + '"]').val("0.00");
+			$('.conversion_amount[name="' + country + '"]').val("0.00");
 		} 
 	});
 
