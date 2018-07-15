@@ -90,7 +90,7 @@ $( document ).ready(function() {
 	});
 
 	$(".send_amount").val("0.00");
-	$(".conversion_amount").val(" 0.00");
+	$(".conversion_amount").val("0.00");
 	$(".final_amount").val("0.00")
 
 // the code below assigns the selected cost of sending money to the final amount.
@@ -112,16 +112,17 @@ $( document ).ready(function() {
 
 // This code works, it changes the form to the current country
 	$('.send_amount').focus(function() {
+
 		var country = $('#send_country option:selected').text();
 		$('#country_input_default').hide();
 		$('.country_input').hide();
 		$('.country_input[value="' + country + '"]').show();
 
-		if ( $('#send_country option:selected').text("") ) {
-			$('#country_input_default').show();
-		} else {
+//		if ( $('#send_country option:selected').text("") ) {
+//			$('#country_input_default').show();
+//		} else {
 
-		};
+//		};
 	});
 	
 
@@ -221,6 +222,20 @@ $( document ).ready(function() {
 			$('.final_amount[name="' + country + '"]').val("0.00");
 			$('.conversion_amount[name="' + country + '"]').val("0.00");
 		} 
+	});
+
+// The code below only desplays the form of the id select
+	$('.id_type[value="2"]').hide();
+	$('.id_type[value="3"]').hide();
+	$(".id_select").change(function() {
+
+		var type =  $('.id_select option:selected').val();
+
+		$('.id_type[value="1"]').hide();
+		$('.id_type[value="2"]').hide();
+		$('.id_type[value="3"]').hide();
+
+		$('.id_type[value="' + type + '"] ').show();
 	});
 
 });

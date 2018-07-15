@@ -200,22 +200,24 @@
 	    
 	    <br>
 	    
-	    <%= f.input :id_type, collection: [['US Drivers License'], ['Government ID'], ['Passport']] %>
+	    <div class="id_select">
+	    	<%= f.input :id_type, collection: [['US Drivers License', '1'], ['Government ID', '2'], ['Passport', '3']] %>
+	    </div>
 	    
-	    <div id='license'>
+	    <div class='id_type' value='1' name='license'>
 		      <%= f.input :lic_number, label: "License Number: " %>
 		      <%= f.input :id_dob, label: "Date of Birth: "  %>
 		      <%= f.input :lic_state, label: "State: "  %>
 	    </div>
 
-	    <div id='government'>
+	    <div class='id_type' value='2' name='government'>
 		   	<%= f.input :gov_number, label: "Gov. ID Number: "  %>
 		    <%= f.input :id_dob, label: "Date of Birth: "  %>
 		    <%= f.input :gov_nation, collection: @countries, input_html: { multiple: false}, label: "Country: "  %>
 	    </div>
 
 
-	    <div id='passport'>
+	    <div class='id_type' value='3' name='passport'>
 		    <%= f.input :pass_number, label: "Passport Number: " %>
 		    <%= f.input :id_dob, label: "Date of Birth: "  %>
 		    <%= f.input :pass_nation, collection: @countries, input_html: { multiple: false}, label: "Country: "  %>
