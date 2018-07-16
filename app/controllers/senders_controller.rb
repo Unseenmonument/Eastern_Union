@@ -27,6 +27,8 @@ class SendersController < ApplicationController
   def create
     @sender = Sender.new(sender_params)
 
+    @sender.customer_number = random.to_s[0..9]
+
     respond_to do |format|
       if @sender.save
         format.html { redirect_to @sender, notice: 'Sender was successfully created.' }
