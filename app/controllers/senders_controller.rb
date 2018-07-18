@@ -93,7 +93,7 @@ class SendersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def sender_params
       params.require(:sender).permit(:f_name, :m_name, :l_name, :pat_name, :mat_name, 
-        :phone_number, :email, :address, :address_zip, :address_state, :recipients, :id_type, 
+        :phone_number, :create_account, :email, :address, :address_zip, :address_state, :recipients, :id_type, 
         :lic_number, :pass_number, :gov_number, :id_dob, :lic_state, :pass_nation, :gov_nation, 
         :send_amount, :final_amount, :sendforself, :payout_nation, :payout_state, :reciever_f_name, 
         :reciever_m_name, :reciever_pat_name, :reciever_mat_name, :test_question, :test_answer,
