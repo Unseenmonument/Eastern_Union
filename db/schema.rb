@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180716233411) do
+ActiveRecord::Schema.define(version: 20180718025913) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -73,7 +73,6 @@ ActiveRecord::Schema.define(version: 20180716233411) do
     t.string "gov_nation"
     t.string "send_amount"
     t.string "final_amount"
-    t.boolean "sendforself"
     t.string "payout_nation"
     t.string "payout_state"
     t.string "reciever_f_name"
@@ -83,11 +82,12 @@ ActiveRecord::Schema.define(version: 20180716233411) do
     t.string "reciever_mat_name"
     t.string "test_question"
     t.string "test_answer"
-    t.integer "mtcn"
     t.date "send_date"
     t.date "payout_date"
     t.string "reciever_country"
     t.string "customer_number"
+    t.string "mtcn"
+    t.boolean "create_account"
   end
 
 end

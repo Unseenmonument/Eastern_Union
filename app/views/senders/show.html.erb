@@ -4,6 +4,7 @@
   <thead>
     <tr>
       <th>Customer Number</th>
+      <th>Create Account</th>
       <th>First Name</th>
       <th>Middle Name</th>
       <th>Last Name</th>
@@ -29,6 +30,7 @@
   <tbody>
       <tr>
         <td><%= @sender.customer_number %></td>
+        <td><%= @sender.create_account %></td>
         <td><%= @sender.f_name %></td>
         <td><%= @sender.m_name %></td>
         <td><%= @sender.l_name %></td>
@@ -47,9 +49,9 @@
         <td><%= @sender.lic_state %></td>
         <td><%= @sender.pass_nation %></td>
         <td><%= @sender.gov_nation %></td>
-        <td><%= link_to 'Show', sender %></td>
+        <td><%= link_to 'Show', @sender %></td>
         <td><%= link_to 'Edit', edit_sender_path(@sender) %></td>
-        <td><%= link_to 'Destroy', sender, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', @sender, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   </tbody>
 </table>

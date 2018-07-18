@@ -27,7 +27,27 @@ class SendersController < ApplicationController
   def create
     @sender = Sender.new(sender_params)
 
-    @sender.customer_number = random.to_s[0..9]
+    num0 = rand(0...10).to_s
+    num1 = rand(0...10).to_s
+    num2 = rand(0...10).to_s
+    num3 = rand(0...10).to_s
+    num4 = rand(0...10).to_s
+    num5 = rand(0...10).to_s
+    num6 = rand(0...10).to_s
+    num7 = rand(0...10).to_s
+    num8 = rand(0...10).to_s
+    num9 = rand(0...10).to_s
+
+    if @sender.create_account == true
+      @cus_num = num0 + num1 + num2 + num3 + num4 + num5
+    else
+      @cus_num = nil
+    end
+
+    @mtcn_num = num0 + num1 + num2 + num3 + num4 + num5 + num6 + num7 + num8 + num9
+
+    @sender.customer_number = @cus_num
+    @sender.mtcn = @mtcn_num
 
     respond_to do |format|
       if @sender.save
