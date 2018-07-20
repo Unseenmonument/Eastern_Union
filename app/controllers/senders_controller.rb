@@ -49,6 +49,16 @@ class SendersController < ApplicationController
     @sender.customer_number = @cus_num
     @sender.mtcn = @mtcn_num
 
+    @trans = Transaction.new(trans_params)
+    @trans.mtcn = @sender.mtcn
+    @trans.sender_f_name = @sender.f_name
+    @trans.sender_m_name = @sender.m_name
+    @trans.sender_l_name = @sender.l_name + @sender.pat_name + @sender.mat_name
+    @trans.reciever_f_name = @sender.reciever_f_name
+    @trans.reciever_m_name = @sender.reciever_m_name
+    @trans.reciever_l_name = @sender.reciever_l_name + @sender.reciever_pat_name + @sender.reciever_mat_name
+    @trans.test_quest_answer = @sender.test_answer
+
     respond_to do |format|
       if @sender.save
         format.html { redirect_to @sender, notice: 'Sender was successfully created.' }
@@ -96,7 +106,20 @@ class SendersController < ApplicationController
         :phone_number, :create_account, :email, :address, :address_zip, :address_state, :recipients, :id_type, 
         :lic_number, :pass_number, :gov_number, :id_dob, :lic_state, :pass_nation, :gov_nation, 
         :send_amount, :final_amount, :sendforself, :payout_nation, :payout_state, :reciever_f_name, 
-        :reciever_m_name, :reciever_pat_name, :reciever_mat_name, :test_question, :test_answer,
-        :customer_number, :mtcn, :send_date, :payout_date )
+        :reciever_m_name, :reciever_l_name, :reciever_pat_name, :reciever_mat_name,:test_answer, :test_question, :test_answer,
+        :customer_number, :mtcn, :send_date, :payout_date)
     end
+
+    def trans_params
+      params.require(:transaction).permit(:mtcn, :sender_f_name, :sender_m_name, :sender_l_name, 
+        :reciever_f_name, :reciever_m_name, :reciever_l_name, :rec_address, :rec_phone, 
+        :rec_zip, :rec_state, :rec_id_type, :rec_pass_num, :rec_pass_dob, :rec_pas_country, 
+        :rec_lic_num, :rec_lic_state, :rec_lic_dob, :rec_govid_num, :rec_govid_country, 
+        :rec_govid_dob, :reciever_city, :test_quest_answer, :second_id, :second_id_type, 
+        :idtwo_pass_country, :idtwo_pass_num, :idtwo_pass_dob, :idtwo_lic_state, 
+        :idtwo_lic_dob_, :idtwo_lic_num, :idtwo_gov_country, :idtwo_gov_num, 
+        :idtwo_gov_dob, :trans_paid, :test_quest_answer)
+    end
+
+
 end

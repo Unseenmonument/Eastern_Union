@@ -35,6 +35,7 @@ class CreateTransactions < ActiveRecord::Migration[5.1]
       t.string :idtwo_gov_country
       t.string :idtwo_gov_num
       t.string :idtwo_gov_dob
+      t.boolean :trans_paid
 
       t.timestamps
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180718025913) do
+ActiveRecord::Schema.define(version: 20180718182357) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -88,6 +88,46 @@ ActiveRecord::Schema.define(version: 20180718025913) do
     t.string "customer_number"
     t.string "mtcn"
     t.boolean "create_account"
+  end
+
+  create_table "transactions", force: :cascade do |t|
+    t.string "mtcn"
+    t.string "sender_f_name"
+    t.string "sender_m_name"
+    t.string "sender_l_name"
+    t.string "reciever_f_name"
+    t.string "reciever_m_name"
+    t.string "reciever_l_name"
+    t.string "rec_address"
+    t.string "rec_phone"
+    t.string "rec_zip"
+    t.string "rec_state"
+    t.string "rec_id_type"
+    t.string "rec_pass_num"
+    t.string "rec_pass_dob"
+    t.string "rec_pas_country"
+    t.string "rec_lic_num"
+    t.string "rec_lic_state"
+    t.string "rec_lic_dob"
+    t.string "rec_govid_num"
+    t.string "rec_govid_country"
+    t.string "rec_govid_dob"
+    t.string "reciever_city"
+    t.string "test_quest_answer"
+    t.boolean "second_id"
+    t.string "second_id_type"
+    t.string "idtwo_pass_country"
+    t.string "idtwo_pass_num"
+    t.string "idtwo_pass_dob"
+    t.string "idtwo_lic_state"
+    t.string "idtwo_lic_dob_"
+    t.string "idtwo_lic_num"
+    t.string "idtwo_gov_country"
+    t.string "idtwo_gov_num"
+    t.string "idtwo_gov_dob"
+    t.boolean "trans_paid"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
