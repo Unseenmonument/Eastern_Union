@@ -6,6 +6,8 @@
       <th>Customer Number</th>
       <th>Create Account</th>
       <th>MTCN</th>
+      <th>Converted Payout Amount</th>
+      <th>Send Amount</th>
       <th>First Name</th>
       <th>Middle Name</th>
       <th>Last Name</th>
@@ -33,6 +35,8 @@
         <td><%= @sender.customer_number %></td>
         <td><%= @sender.create_account %></td>
         <td><%= @sender.mtcn %></td>
+        <td><%= @sender.conversion_amount %></td>
+        <td><%= @sender.send_amount %></td>
         <td><%= @sender.f_name %></td>
         <td><%= @sender.m_name %></td>
         <td><%= @sender.l_name %></td>
@@ -60,6 +64,44 @@
         <td><%= link_to 'Edit', edit_sender_path(@sender) %></td>
         <td><%= link_to 'Destroy', @sender, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+  </tbody>
+</table>
+
+
+<p>Transactions</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>MTCN</th>
+      <th>Payout Amount</th>
+      <th>Sender First Name</th>
+      <th>Sender Middle Name</th>
+      <th>Sender Last Name</th>
+      <th>Test Question</th>
+      <th>Test Answer</th>     
+      <th>Expected First Name</th>
+      <th>Expected Middle Name</th>
+      <th>Expected Last Name</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @trans.each do |trans| %>
+      <tr>
+        <td><%= trans.mtcn %></td>
+        <td><%= trans.payout_amount %></td>
+        <td><%= trans.sender_f_name %></td>
+        <td><%= trans.sender_m_name %></td>
+        <td><%= trans.sender_l_name %></td>
+        <td><%= trans.test_question %></td>
+        <td><%= trans.test_quest_answer %></td>
+        <td><%= trans.expected_f_name %></td>
+        <td><%= trans.expected_m_name %></td>
+        <td><%= trans.expected_l_name %></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>
 

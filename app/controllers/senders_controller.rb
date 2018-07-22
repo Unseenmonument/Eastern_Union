@@ -10,12 +10,14 @@ class SendersController < ApplicationController
   # GET /senders/1
   # GET /senders/1.json
   def show
+    @trans = Transaction.all
   end
 
   # GET /senders/new
   def new
     @countries = Country.all
     @sender = Sender.new
+    @trans = Transaction.new
   end
 
   # GET /senders/1/edit
@@ -49,15 +51,19 @@ class SendersController < ApplicationController
     @sender.customer_number = @cus_num
     @sender.mtcn = @mtcn_num
 
-    @trans = Transaction.new(trans_params)
+    @trans = Transaction.new
     @trans.mtcn = @sender.mtcn
     @trans.sender_f_name = @sender.f_name
     @trans.sender_m_name = @sender.m_name
     @trans.sender_l_name = @sender.l_name + @sender.pat_name + @sender.mat_name
-    @trans.reciever_f_name = @sender.reciever_f_name
-    @trans.reciever_m_name = @sender.reciever_m_name
-    @trans.reciever_l_name = @sender.reciever_l_name + @sender.reciever_pat_name + @sender.reciever_mat_name
+    @trans.expected_f_name = @sender.reciever_f_name
+    @trans.expected_m_name = @sender.reciever_m_name
+    @trans.expected_l_name = @sender.reciever_l_name + @sender.reciever_pat_name + @sender.reciever_mat_name
     @trans.test_quest_answer = @sender.test_answer
+    @trans.test_question = @sender.test_question
+    @trans.payout_amount = @sender.conversion_amount
+
+    @trans.save
 
     respond_to do |format|
       if @sender.save
@@ -107,7 +113,7 @@ class SendersController < ApplicationController
         :lic_number, :pass_number, :gov_number, :id_dob, :lic_state, :pass_nation, :gov_nation, 
         :send_amount, :final_amount, :sendforself, :payout_nation, :payout_state, :reciever_f_name, 
         :reciever_m_name, :reciever_l_name, :reciever_pat_name, :reciever_mat_name,:test_answer, :test_question, :test_answer,
-        :customer_number, :mtcn, :send_date, :payout_date)
+        :customer_number, :mtcn, :send_date, :payout_date, :conversion_amount)
     end
 
     def trans_params
@@ -118,7 +124,7 @@ class SendersController < ApplicationController
         :rec_govid_dob, :reciever_city, :test_quest_answer, :second_id, :second_id_type, 
         :idtwo_pass_country, :idtwo_pass_num, :idtwo_pass_dob, :idtwo_lic_state, 
         :idtwo_lic_dob_, :idtwo_lic_num, :idtwo_gov_country, :idtwo_gov_num, 
-        :idtwo_gov_dob, :trans_paid, :test_quest_answer)
+        :idtwo_gov_dob, :trans_paid, :test_quest_answer, :payout_amount)
     end
 
 

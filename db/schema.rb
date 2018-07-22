@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180718182357) do
+ActiveRecord::Schema.define(version: 20180722172834) do
 
   create_table "countries", force: :cascade do |t|
     t.string "name"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20180718182357) do
     t.string "customer_number"
     t.string "mtcn"
     t.boolean "create_account"
+    t.string "conversion_amount"
   end
 
   create_table "transactions", force: :cascade do |t|
@@ -128,6 +129,11 @@ ActiveRecord::Schema.define(version: 20180718182357) do
     t.boolean "trans_paid"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "test_question"
+    t.string "expected_f_name"
+    t.string "expected_m_name"
+    t.string "expected_l_name"
+    t.string "payout_amount"
   end
 
 end
