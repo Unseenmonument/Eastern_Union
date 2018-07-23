@@ -47,7 +47,9 @@
 	    </div>
 
 	    <div id='country_input_default'>
-	    	<%= f.input :send_amount, input_html: { :class => "send_amount" }, label: "Send Amount: " %>
+	    	<!-- <%= f.input :send_amount, input_html: { :class => "send_amount" }, label: "Send Amount: " %> -->
+
+	    	<p>Send Amount: <input type="text" class="send_amount"></input></p>
 	          
 	    	<p>
 	    		The exchange rate for <span class="reciever_country">this country</span> is: <span class="exchange_rate"> 1 </span>  
@@ -58,33 +60,39 @@
 		        <input type="text" class="conversion_amount"></input>
 		    </p>
 
-	      	<%= f.input :final_amount, input_html: { :class => "final_amount" }, as: :currency, label: "Total Amount: " %>    
+		    <input type="text" class="final_amount"></input>
+
+	      	<!-- <%= f.input :final_amount, input_html: { :class => "final_amount" }, as: :currency, label: "Total Amount: " %>    -->
 	    </div>
     
 	    <% @countries.each do |c| %>
 		    <div class='country_input' value="<%= c.name %>">
-		    	<%= f.input :send_amount, input_html: { 
+		    	<!--<%= f.input :send_amount, input_html: { 
 		          :class => "send_amount",
 		          :name => c.name
-		           }, as: :currency, label: "Send Amount: " %>
+		           }, as: :currency, label: "Send Amount: " %> -->
+
+		        <p>Send Amount: <input type="text" name='<%= c.name %>' class="send_amount"></input></p>
 		        
 		        <p>The exchange rate for <span class="reciever_country"><%= c.name %></span> is: <span class="exchange_rate" name='<%= c.name %>' value='<%= c.exchange_rate %>'> <%= c.exchange_rate %> </span>.</p>
 		          
 		        <p> Local Currency Payout: 
-		            <!--<input type="text" name='<%= c.name %>' class="conversion_amount"></input> -->
+		            <input type="text" name='<%= c.name %>' class="conversion_amount"></input>
 
-		            <%= f.input :conversion_amount, input_html: { 
-		          :class => "conversion_amount",
-		          :name => c.name 
-		         }, as: :currency, label: "Conversion Amount: " %>
+		            <!-- <%= f.input :conversion_amount, input_html: { 
+			          :class => "conversion_amount",
+			          :name => c.name 
+			         }, as: :currency, label: "Conversion Amount: " %> -->
 
 
 		        </p>
+
+		        <p>Total Amount: <input type="text" name='<%= c.name %>' class="final_amount"></input></p>
 		        
-		        <%= f.input :final_amount, input_html: { 
+		        <!-- <%= f.input :final_amount, input_html: { 
 		          :class => "final_amount",
 		          :name => c.name 
-		         }, as: :currency, label: "Total Amount: " %>
+		         }, as: :currency, label: "Total Amount: " %> -->
 		        
 		        <br>
 
@@ -180,6 +188,27 @@
 	        </div>
 
 	    <% end %>
+
+	    <div id="hide_send_amount">
+		    <%= f.input :send_amount, input_html: { 
+			          :class => "send_amount",
+			          :id => "send_amount_final",
+			           }, as: :currency, label: "Send Amount: " %>
+		</div>
+		
+		<div id="hide_conv_amount">
+			<%= f.input :conversion_amount, input_html: { 
+				          :class => "conversion_amount",
+				          :id => "conversion_amount_final"
+				         }, as: :currency, label: "Conversion Amount: " %>
+		</div>
+		
+		<div id="hide_final_amount">
+			<%= f.input :final_amount, input_html: { 
+			          :class => "final_amount",
+			          :id => "final_amount_final"
+			         }, as: :currency, label: "Total Amount: " %>
+		</div>
 
     	<br>
 

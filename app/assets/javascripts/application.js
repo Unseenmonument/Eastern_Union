@@ -20,6 +20,10 @@
 
 $( document ).ready(function() {
 
+	$('#hide_send_amount').hide();
+	$('#hide_conv_amount').hide();
+	$('#hide_final_amount').hide();
+
 //  This hides the options for inputting paternal names
 	$('#paternal_name').hide();
 	$('#paternal_uncheck').hide();
@@ -98,6 +102,8 @@ $( document ).ready(function() {
 		var country = $('#send_country option:selected').text();
 
 		var send_amount = $('.send_amount[name="' + country + '"]').val();
+//		Make sure this is necessary
+		$('#send_amount_final').val(send_amount).toString;
 		var send_amount = parseFloat(send_amount);
 
 		var cost = $('input[name="fee_select"]:checked').val();
@@ -108,6 +114,7 @@ $( document ).ready(function() {
 		var fin = fin.toFixed(2);
 
 		 $('.final_amount[name="' + country + '"]').val(fin);
+		 $('#final_amount_final').val(fin);
 	});
 
 // This code works, it changes the form to the current country
@@ -133,6 +140,7 @@ $( document ).ready(function() {
 		var fin = $('.final_amount[name="' + country + '"]').val();
 		var send = $('.send_amount[name="' + country + '"]').val();
 		var send = parseFloat(send);
+		$('#send_amount_final').val(send).toString;
 
 		var exchange = $('.exchange_rate[name="' + country + '"]').text();
 		var exchange = parseFloat(exchange);
@@ -140,9 +148,11 @@ $( document ).ready(function() {
 		var con = send * exchange;
 		var con = parseFloat(con);
 		var con = con.toFixed(2);
+		var con1 = con.toString;
 
 		//Put the conversion amount in the correct field
 		$('.conversion_amount[name="' + country + '"]').val(con);
+		$('#conversion_amount_final').val(con).toString;
 
 		var con_amount = con;
 		var con_amount = parseFloat(con_amount);
@@ -177,7 +187,9 @@ $( document ).ready(function() {
 			var fin = con_amount + send_option;
 			var fin = parseFloat(fin);
 			var fin = fin.toFixed(2);
-			$('.final_amount[name="' + country + '"]').val(fin);
+//			var fin1 = fin.toString;
+			$('.final_amount[name="' + country + '"]').val(fin).toString;
+			$('#final_amount_final').val(fin).toString;
 
 			$('.mim_tier1[name="' + country + '"]').show();
 			$('.nextday_tier1[name="' + country + '"]').show();
@@ -189,7 +201,9 @@ $( document ).ready(function() {
 			var fin = con_amount + send_option;
 			var fin = parseFloat(fin);
 			var fin = fin.toFixed(2);
-			$('.final_amount[name="' + country + '"]').val(fin);
+//			var fin1 = fin.toString;
+			$('.final_amount[name="' + country + '"]').val(fin).toString;
+			$('#final_amount_final').val(fin).toString;
 
 			$('.mim_tier2[name="' + country + '"]').show();
 			$('.nextday_tier2[name="' + country + '"]').show();
@@ -201,7 +215,9 @@ $( document ).ready(function() {
 			var fin = con_amount + send_option;
 			var fin = parseFloat(fin);
 			var fin = fin.toFixed(2);
-			$('.final_amount[name="' + country + '"]').val(fin);
+//			var fin1 = fin.toString;
+			$('.final_amount[name="' + country + '"]').val(fin).toString;
+			$('#final_amount_final').val(fin).toString;
 
 			$('.mim_tier3[name="' + country + '"]').show();
 			$('.nextday_tier3[name="' + country + '"]').show();
@@ -213,7 +229,9 @@ $( document ).ready(function() {
 			var fin = con_amount + send_option;
 			var fin = parseFloat(fin);
 			var fin = fin.toFixed(2);
-			$('.final_amount[name="' + country + '"]').val(fin);
+//			var fin1 = fin.toString;
+			$('.final_amount[name="' + country + '"]').val(fin).toString;
+			$('#final_amount_final').val(fin.toString);
 
 			$('.mim_tier4[name="' + country + '"]').show();
 			$('.nextday_tier4[name="' + country + '"]').show();
@@ -221,6 +239,7 @@ $( document ).ready(function() {
 			alert('The amount you entered is too high, please enter a lesser value.');
 			$('.final_amount[name="' + country + '"]').val("0.00");
 			$('.conversion_amount[name="' + country + '"]').val("0.00");
+
 		} 
 	});
 
