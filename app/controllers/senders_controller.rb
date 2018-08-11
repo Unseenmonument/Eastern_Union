@@ -42,6 +42,7 @@ class SendersController < ApplicationController
 
     if @sender.create_account == true
       @cus_num = num0 + num1 + num2 + num3 + num4 + num5
+
     else
       @cus_num = nil
     end
