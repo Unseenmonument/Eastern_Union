@@ -1,1 +1,23 @@
-search_pickups.html.erb
+<h1>Search for a Pickup Transaction </h1>
+
+
+<p> Please Enter the MTCN:  <input type="text" class="MTCN_search" ></p> <br>
+
+<%= @trans.each do |t| %>
+
+			
+		<div class="trans" name="<% t.mtcn %>" >
+			<p><%= t.mtcn %></p>
+			<%= t.sender_f_name %>
+			<%= t.sender_m_name %>
+			<%= t.sender_l_name %>
+			<p>something goes here</p>
+			<br>
+		</div>
+
+<% end %>
+
+
+
+
+

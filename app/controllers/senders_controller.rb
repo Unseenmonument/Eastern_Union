@@ -64,10 +64,8 @@ class SendersController < ApplicationController
     @trans.test_question = @sender.test_question
     @trans.payout_amount = @sender.conversion_amount
 
-    @trans.save
-
     respond_to do |format|
-      if @sender.save
+      if @sender.save && @trans.save
         format.html { redirect_to @sender, notice: 'Sender was successfully created.' }
         format.json { render :show, status: :created, location: @sender }
       else
